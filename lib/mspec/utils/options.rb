@@ -206,34 +206,23 @@ class MSpecOptions
   end
 
   def targets
+    targets = [
+      [['r',   'ruby'      ], 'ruby'],
+      [['r19', 'ruby19'    ], 'ruby1.9'],
+      [['x',   'rubinius'  ], './bin/rbx'],
+      [['x18', 'rubinius18'], './bin/rbx -X18'],
+      [['x19', 'rubinius19'], './bin/rbx -X19'],
+      [['x20', 'rubinius20'], './bin/rbx -X20'],
+      [['X',   'rbx'       ], 'rbx'],
+      [['j',   'jruby'     ], 'jruby'],
+      [['i',   'ironruby'  ], 'ir'],
+      [['m',   'maglev'    ], 'maglev-ruby'],
+      [['t',   'topaz'     ], 'topaz'],
+    ]
     on("-t", "--target", "TARGET",
        "Implementation to run the specs, where TARGET is:") do |t|
-      case t
-      when 'r', 'ruby'
-        config[:target] = 'ruby'
-      when 'r19', 'ruby19'
-        config[:target] = 'ruby1.9'
-      when 'x', 'rubinius'
-        config[:target] = './bin/rbx'
-      when 'x18', 'rubinius18'
-        config[:target] = './bin/rbx -X18'
-      when 'x19', 'rubinius19'
-        config[:target] = './bin/rbx -X19'
-      when 'x20', 'rubinius20'
-        config[:target] = './bin/rbx -X20'
-      when 'X', 'rbx'
-        config[:target] = 'rbx'
-      when 'j', 'jruby'
-        config[:target] = 'jruby'
-      when 'i','ironruby'
-        config[:target] = 'ir'
-      when 'm','maglev'
-        config[:target] = 'maglev-ruby'
-      when 't','topaz'
-        config[:target] = 'topaz'
-      else
-        config[:target] = t
-      end
+      match = targets.find{|(names, _command)| names.include?(t)}
+      config[:target] = match ? match.last : t
     end
 
     doc ""
