@@ -218,6 +218,7 @@ class MSpecOptions
       [['i',   'ironruby'  ], 'ir'],
       [['m',   'maglev'    ], 'maglev-ruby'],
       [['t',   'topaz'     ], 'topaz'],
+      [['o',   'opal'      ], './bin/opal -syaml -siconv -sfileutils -rfile -rnodejs -rnodejs/yaml -rprocess -Dwarning -I/Users/elia/Code/mspec/lib/ -I./lib/ -I. -rmspec/opal/mspec_fixes.rb'],
     ]
     on("-t", "--target", "TARGET",
        "Implementation to run the specs, where TARGET is:") do |t|
@@ -237,6 +238,7 @@ class MSpecOptions
     doc "     i or ironruby     invokes ir in PATH"
     doc "     m or maglev       invokes maglev-ruby in PATH"
     doc "     t or topaz        invokes topaz in PATH"
+    doc "     o or opal         invokes ./bin/opal with options"
     doc "     full path to EXE  invokes EXE directly\n"
 
     on("-T", "--target-opt", "OPT",
