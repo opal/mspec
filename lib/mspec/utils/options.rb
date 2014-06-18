@@ -206,6 +206,7 @@ class MSpecOptions
   end
 
   def targets
+    mspec_lib = File.expand_path('../../../', __FILE__)
     targets = [
       [['r',   'ruby'      ], 'ruby'],
       [['r19', 'ruby19'    ], 'ruby1.9'],
@@ -218,7 +219,7 @@ class MSpecOptions
       [['i',   'ironruby'  ], 'ir'],
       [['m',   'maglev'    ], 'maglev-ruby'],
       [['t',   'topaz'     ], 'topaz'],
-      [['o',   'opal'      ], 'bundle exec ./bin/opal -syaml -siconv -sfileutils -rfile -rnodejs -rnodejs/require -rnodejs/yaml -rprocess -Derror -I/Users/elia/Code/mspec/lib/ -I./lib/ -I. '],
+      [['o',   'opal'      ], "bundle exec ./bin/opal -syaml -siconv -sfileutils -rfile -rnodejs -rnodejs/require -rnodejs/yaml -rprocess -Derror -I#{mspec_lib} -I./lib/ -I. "],
     ]
     on("-t", "--target", "TARGET",
        "Implementation to run the specs, where TARGET is:") do |t|
