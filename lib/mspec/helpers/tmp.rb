@@ -28,7 +28,7 @@ all specs are cleaning up temporary files:
     STDERR.puts "failed to remove spec temp directory"
     STDERR.puts e.message
   end
-end unless RUBY_PLATFORM == 'opal'
+end
 
 class Object
   def tmp(name, uniquify=true)
