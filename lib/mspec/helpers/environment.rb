@@ -7,7 +7,6 @@ class Object
     end
 
     platform_is :windows do
-      p RUBY_PLATFORM: RUBY_PLATFORM
       env = Hash[*`cmd.exe /C set`.split("\n").map { |e| e.split("=", 2) }.flatten]
     end
 
