@@ -219,7 +219,7 @@ class MSpecOptions
       [['i',   'ironruby'  ], 'ir'],
       [['m',   'maglev'    ], 'maglev-ruby'],
       [['t',   'topaz'     ], 'topaz'],
-      [['o',   'opal'      ], "bundle exec ./bin/opal -syaml -siconv -sfileutils -rfile -rnodejs -rnodejs/require -rnodejs/yaml -rprocess -Derror -I#{mspec_lib} -I./lib/ -I. "],
+      [['o',   'opal'      ], "./bin/opal -syaml -siconv -sfileutils -rnodejs -rnodejs/require -rnodejs/yaml -rprocess -Derror -I#{mspec_lib} -I./lib/ -I. "],
     ]
     on("-t", "--target", "TARGET",
        "Implementation to run the specs, where TARGET is:") do |t|
