@@ -3,7 +3,7 @@ require 'mspec/guards/guard'
 class BlockDeviceGuard < SpecGuard
   def match?
     platform_is_not :freebsd, :windows, :opal do
-      block = `find /dev /devices -type b 2> /dev/null` unless RUBY_PLATFORM == 'opal'
+      block = `find /dev /devices -type b 2> /dev/null`
       return !(block.nil? || block.empty?)
     end
 
